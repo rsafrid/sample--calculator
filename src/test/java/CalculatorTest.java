@@ -202,7 +202,7 @@ public class CalculatorTest {
 		double secondNumber = 0;
 		double result = 0;
 
-		for (int i = 0; i<200; i++) {
+		for (int i = 0; i < 200; i++) {
 			firstNumber = Double.valueOf(df.format(random.nextDouble() * 1000));
 			secondNumber = Double.valueOf(df.format(random.nextDouble() * 1000));
 			result = firstNumber + secondNumber;
@@ -212,7 +212,117 @@ public class CalculatorTest {
 
 		}
 	}
-}
+	
+	@Test
+	public void testSubtractSmallSizedNegativeNumbers() {
+		double firstNumber = 0;
+		double secondNumber = 0;
+		double result = 0;
+
+		for (int i = 0; i < 200; i++) {
+			firstNumber = Double.valueOf(df.format(random.nextDouble() * (-10)));
+			secondNumber = Double.valueOf(df.format(random.nextDouble() * (-10)));
+			result = firstNumber + secondNumber;
+
+			LOG.info("Testing the method subtract with: " + firstNumber + " and " + secondNumber + " (" + result +")");
+			assertEquals(Math.round(calculator.subtract(firstNumber, secondNumber)), Math.round(result), 1);
+
+		}
+	}
+	
+	@Test
+	public void testSubtractMediumSizedNegatieNumbers() {
+		double firstNumber = 0;
+		double secondNumber = 0;
+		double result = 0;
+
+		for (int i = 0; i < 200; i++) {
+			firstNumber = Double.valueOf(df.format(random.nextDouble() * (-100)));
+			secondNumber = Double.valueOf(df.format(random.nextDouble() * (-100)));
+			result = firstNumber + secondNumber;
+
+			LOG.info("Testing the method subtract with: " + firstNumber + " and " + secondNumber + " (" + result +")");
+			assertEquals(Math.round(calculator.subtract(firstNumber, secondNumber)), Math.round(result), 1);
+
+		}
+	}
+	
+	@Test
+	public void testSubtractLargeSizedNegativeNumbers() {
+		double firstNumber = 0;
+		double secondNumber = 0;
+		double result = 0;
+
+		for (int i = 0; i < 200; i++) {
+			firstNumber = Double.valueOf(df.format(random.nextDouble() * (-1000)));
+			secondNumber = Double.valueOf(df.format(random.nextDouble() * (-1000)));
+			result = firstNumber + secondNumber;
+
+			LOG.info("Testing the method subtract with: " + firstNumber + " and " + secondNumber + " (" + result +")");
+			assertEquals(Math.round(calculator.subtract(firstNumber, secondNumber)), Math.round(result), 1);
+
+		}
+	}
+	
+	@Test
+	public void testSubtractZero() {
+		// Testing the case 0 + 0
+		double firstNumber = 0;
+		double secondNumber = 0;
+		double result = firstNumber - secondNumber;
+
+		LOG.info("Testing the method subtract with: " + firstNumber + " and " + secondNumber);
+		assertEquals(Math.round(calculator.subtract(firstNumber, secondNumber)), Math.round(result), 1);
+
+		for (int i = 0; i < 200; i++) {
+
+			// Testing the case of 0 + (something random)
+			firstNumber = 0;
+			secondNumber = Double.valueOf(df.format(random.nextDouble() * (1000)));
+			result = firstNumber + secondNumber;
+
+			LOG.info("Testing the method subtract with: " + firstNumber + " and " + secondNumber);
+			assertEquals(Math.round(calculator.subtract(firstNumber, secondNumber)), Math.round(result), 1);
+
+			// Testing the case of (something random) + 0
+			firstNumber = Double.valueOf(df.format(random.nextDouble() * (1000)));
+			secondNumber = 0;
+			result = firstNumber + secondNumber;
+
+			LOG.info("Testing the method subtract with: " + firstNumber + " and " + secondNumber);
+			assertEquals(Math.round(calculator.subtract(firstNumber, secondNumber)), Math.round(result), 1);
+		}
+	}
+	
+	/**
+	 * Test av division
+	 */
+	
+	@Test
+	public void testDivideSmallSizedPositiveNumbers() {
+		// testing the case 0/0
+		double firstNumber = 0;
+		double secondNumber = 0;
+		double result = -0.123456789;
+
+		/*for (int i = 0; i < 200; i++) {
+			firstNumber = Double.valueOf(df.format(random.nextDouble() * 10));
+			secondNumber = Double.valueOf(df.format(random.nextDouble() * 10));
+			result = firstNumber + secondNumber; */
+
+			LOG.info("Testing the method divide with: " + firstNumber + " and " + secondNumber);
+			assertEquals(Math.round(calculator.divide(firstNumber, secondNumber)), Math.round(result), 1);
+			
+			// testing the case of (Random something) / 0
+			firstNumber = Double.valueOf(df.format(random.nextDouble()*(1000)));
+			secondNumber = 0;
+			result = -0.123456789;
+			LOG.info("Testing the method divide with: " + firstNumber + " and " + secondNumber);
+			assertEquals(Math.round(calculator.divide(firstNumber, secondNumber)), Math.round(result), 1);
+
+		}
+	}
+
 
 /*
  * Small positive numbers: You will generate random numbers between 0-10 Medium

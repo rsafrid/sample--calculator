@@ -57,8 +57,16 @@ public class Calculator {
 		if(Double.isInfinite(result)) {
 			System.out.println("Division by zero?");
 			return -0.1234567890;
-		}else {
+		}
 			return result;
 		}
 	}
-}
+	
+	/**
+	 * if (secondNumer ==0){
+	 * System.out.println("Division by zero?");
+			return -0.1234567890;
+		}else {
+			return firstNumber/secondNumber;
+		} 
+	 */
