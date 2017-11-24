@@ -53,10 +53,12 @@ public class Calculator {
 	 * @return: the result of the division.
 	 * */
 	public double divide(double firstNumber, double secondNumber){
-		return firstNumber/secondNumber;
+		double result = firstNumber / secondNumber;
+		if(Double.isInfinite(result)) {
+			System.out.println("Division by zero?");
+			return -0.1234567890;
+		}else {
+			return result;
+		}
 	}
-	
-	
-	
-
 }
