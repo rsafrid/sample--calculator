@@ -11,6 +11,13 @@ public class CalculatorTest {
 	Calculator calculator = new Calculator();
 	Random random = new Random();
 	DecimalFormat df = new DecimalFormat();
+	
+	/**
+	 * IMPLEMENTATION of the test methods for addition.
+	 * 
+	 *
+	 * 
+	 */
 
 	@Test
 	public void testAddSmallSizedPositiveNumbers() {
@@ -62,6 +69,8 @@ public class CalculatorTest {
 
 		}
 	}
+	
+	
 
 	@Test
 	public void testAddZero() {
@@ -92,6 +101,8 @@ public class CalculatorTest {
 			assertEquals(Math.round(calculator.add(firstNumber, secondNumber)), Math.round(result), 1);
 		}
 	}
+	
+	
 
 	@Test
 	public void testAddSmallSizedNegativeNumbers() {
@@ -144,6 +155,63 @@ public class CalculatorTest {
 		}
 	}
 
+	/**
+	 * IMPLEMENTATION of the test methods for subtraction.
+	 * 
+	 *
+	 * 
+	 */
+	
+	@Test
+	public void testSubtractSmallSizedPositiveNumbers() {
+		double firstNumber = 0;
+		double secondNumber = 0;
+		double result = 0;
+
+		for (int i = 0; i < 200; i++) {
+			firstNumber = Double.valueOf(df.format(random.nextDouble() * 10));
+			secondNumber = Double.valueOf(df.format(random.nextDouble() * 10));
+			result = firstNumber + secondNumber;
+
+			LOG.info("Testing the method subtract with: " + firstNumber + " and " + secondNumber + " (" + result +")");
+			assertEquals(Math.round(calculator.subtract(firstNumber, secondNumber)), Math.round(result), 1);
+
+		}
+	}
+	
+	@Test
+	public void testSubtractMediumSizedPositiveNumbers() {
+		double firstNumber = 0;
+		double secondNumber = 0;
+		double result = 0;
+
+		for (int i = 0; i < 200; i++) {
+			firstNumber = Double.valueOf(df.format(random.nextDouble() * 100));
+			secondNumber = Double.valueOf(df.format(random.nextDouble() * 100));
+			result = firstNumber + secondNumber;
+
+			LOG.info("Testing the method subtract with: " + firstNumber + " and " + secondNumber + " (" + result +")");
+			assertEquals(Math.round(calculator.subtract(firstNumber, secondNumber)), Math.round(result), 1);
+
+		}
+	}
+	
+	@Test
+	public void testSubtractLargeSizedPositiveNumbers() {
+		double firstNumber = 0;
+		double secondNumber = 0;
+		double result = 0;
+
+		for (int i = 0; i<200; i++) {
+			firstNumber = Double.valueOf(df.format(random.nextDouble() * 1000));
+			secondNumber = Double.valueOf(df.format(random.nextDouble() * 1000));
+			result = firstNumber + secondNumber;
+
+			LOG.info("Testing the method subtract with: " + firstNumber + " and " + secondNumber + " (" + result +")");
+			assertEquals(Math.round(calculator.subtract(firstNumber, secondNumber)), Math.round(result), 1);
+
+		}
+	}
 }
 
 /*
