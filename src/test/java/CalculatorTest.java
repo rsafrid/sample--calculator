@@ -73,23 +73,25 @@ public class CalculatorTest {
 		LOG.info("Testing the method add with: " + firstNumber + " and " + secondNumber);
 		assertEquals(Math.round(calculator.add(firstNumber, secondNumber)), Math.round(result), 1);
 
-		// Testing the case of 0 + (something random)
-		firstNumber = 0;
-		secondNumber = Double.valueOf(df.format(random.nextDouble() * (1000)));
-		result = firstNumber + secondNumber;
+		for (int i = 0; i < 200; i++) {
 
-		LOG.info("Testing the method add with: " + firstNumber + " and " + secondNumber);
-		assertEquals(Math.round(calculator.add(firstNumber, secondNumber)), Math.round(result), 1);
+			// Testing the case of 0 + (something random)
+			firstNumber = 0;
+			secondNumber = Double.valueOf(df.format(random.nextDouble() * (1000)));
+			result = firstNumber + secondNumber;
 
-		// Testing the case of (something random) + 0
-		firstNumber = Double.valueOf(df.format(random.nextDouble() * (1000)));
-		secondNumber = 0;
-		result = firstNumber + secondNumber;
+			LOG.info("Testing the method add with: " + firstNumber + " and " + secondNumber);
+			assertEquals(Math.round(calculator.add(firstNumber, secondNumber)), Math.round(result), 1);
 
-		LOG.info("Testing the method add with: " + firstNumber + " and " + secondNumber);
-		assertEquals(Math.round(calculator.add(firstNumber, secondNumber)), Math.round(result), 1);
+			// Testing the case of (something random) + 0
+			firstNumber = Double.valueOf(df.format(random.nextDouble() * (1000)));
+			secondNumber = 0;
+			result = firstNumber + secondNumber;
+
+			LOG.info("Testing the method add with: " + firstNumber + " and " + secondNumber);
+			assertEquals(Math.round(calculator.add(firstNumber, secondNumber)), Math.round(result), 1);
+		}
 	}
-	// }
 
 	@Test
 	public void testAddSmallSizedNegativeNumbers() {
